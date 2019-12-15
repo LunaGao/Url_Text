@@ -6,17 +6,18 @@ import 'package:url_launcher/url_launcher.dart';
 
 class UrlText extends StatelessWidget {
   final String text;
+  final TextStyle style;
+  final TextStyle urlStyle;
 
-  UrlText(this.text);
+  UrlText({this.text, this.style, this.urlStyle});
 
   List<InlineSpan> getTextSpans() {
     List<InlineSpan> widgets = List<InlineSpan>();
-    RegExp reg = RegExp(r"[.]*(www)?[.]*");
+    RegExp reg = RegExp(r"(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]*");
     Iterable<Match> _matches = reg.allMatches(text);
     List<_ResultMatch> resultMatches = List<_ResultMatch>();
     int start = 0;
     for (Match match in _matches) {
-      print('start');
       if (match.group(0).isNotEmpty) {
         if (start != match.start) {
           _ResultMatch result1 = _ResultMatch();
@@ -31,7 +32,6 @@ class UrlText extends StatelessWidget {
         resultMatches.add(result2);
         start = match.end;
       }
-      print('end');
     }
     if (start < text.length) {
       _ResultMatch result1 = _ResultMatch();
@@ -39,13 +39,16 @@ class UrlText extends StatelessWidget {
       result1.text = text.substring(start);
       resultMatches.add(result1);
     }
-    for (var a in resultMatches) {
-      if (a.isUrl) {
-        widgets.add(
-            _LinkTextSpan(text: a.text, style: TextStyle(color: Colors.blue)));
+    for (var result in resultMatches) {
+      if (result.isUrl) {
+        widgets.add(_LinkTextSpan(
+            text: result.text,
+            style:
+                urlStyle != null ? urlStyle : TextStyle(color: Colors.blue)));
       } else {
-        widgets
-            .add(TextSpan(text: a.text, style: TextStyle(color: Colors.black)));
+        widgets.add(TextSpan(
+            text: result.text,
+            style: style != null ? style : TextStyle(color: Colors.black)));
       }
     }
     return widgets;
