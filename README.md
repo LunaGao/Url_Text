@@ -14,3 +14,10 @@ UrlText(
     style: TextStyle(color: Colors.pink),
 ),
 ```
+
+## Publish to Pub.dev
+```
+flutter format .
+flutter pub pub publish --dry-run
+flutter pub pub publish
+```
