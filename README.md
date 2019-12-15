@@ -18,6 +18,6 @@ UrlText(
 ## Publish to Pub.dev
 ```
 flutter format .
-flutter pub pub publish --dry-run
-flutter pub pub publish
+flutter pub publish --dry-run
+flutter pub publish
 ```
