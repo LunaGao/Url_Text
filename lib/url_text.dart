@@ -4,14 +4,21 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// Url & Text mix Widget
 class UrlText extends StatelessWidget {
+  /// The Url and Text mix String
   final String text;
+
+  /// The Text style
   final TextStyle style;
+
+  /// The Url style
   final TextStyle urlStyle;
 
+  /// Create a UrlText widget.
   UrlText({this.text, this.style, this.urlStyle});
 
-  List<InlineSpan> getTextSpans() {
+  List<InlineSpan> _getTextSpans() {
     List<InlineSpan> widgets = List<InlineSpan>();
     RegExp reg = RegExp(
         r"(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]*");
@@ -58,7 +65,7 @@ class UrlText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: TextSpan(children: getTextSpans()),
+      text: TextSpan(children: _getTextSpans()),
     );
   }
 }
