@@ -99,7 +99,6 @@ class UrlText extends StatelessWidget {
         result2.isUrl = true;
         result2.text = match.group(1)!;
         result2.link = match.group(2)!;
-        print(result2.link);
         resultMatches.add(result2);
         start = match.end;
       }

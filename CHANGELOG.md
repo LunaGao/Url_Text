@@ -1,4 +1,7 @@
 ## [2.0.0] - 2023-06-07
+* fix readme file
+
+## [2.0.0] - 2023-06-07
 * upgrade version of url_launcher to 6.1.11
 * add markdown link
 * upgrade to dart 3

@@ -9,9 +9,22 @@ Url Test. Identify web links in text and make them clickable.
 
 ```dart
 UrlText(
-    text: 'This https://www.google.com is jump to Google.',
-    urlStyle: TextStyle(color: Colors.green),
+    'This https://www.google.com is jump to Google.',
+    urlStyle: TextStyle(
+        color: Colors.purple,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.w800),
     style: TextStyle(color: Colors.pink),
+    markdown: false,
+),
+UrlText(
+    'Or just using the markdown. [This is Google Web](https://www.google.com).',
+    urlStyle: TextStyle(
+        color: Colors.purple,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.w800),
+    style: TextStyle(color: Colors.pink),
+    markdown: true,
 ),
 ```
 
