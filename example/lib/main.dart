@@ -12,16 +12,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -31,31 +27,29 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Flutter Demo Home Page'),
       ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               UrlText(
-                text:
-                    'This is the demo image of Url_text, Which you can click https://www.google.com to jump to Google.',
+                'This is the demo image of Url_text, Which you can click https://www.google.com to jump to Google.',
               ),
               SizedBox(
                 height: 20,
               ),
               UrlText(
-                text:
-                    'You can change the TextStyle for Url. It looks like this: https://www.google.com .',
+                'You can change the TextStyle for Url. It looks like this: https://www.google.com .',
                 urlStyle: TextStyle(color: Colors.red, fontSize: 20.0),
               ),
               SizedBox(
                 height: 20,
               ),
               UrlText(
-                text:
-                    'Or you can change the TextStyle for normal text. It looks like this: https://www.google.com .',
+                'Or you can change the TextStyle for normal text. It looks like this: https://www.google.com .',
                 style: TextStyle(
                   color: Colors.green,
                 ),
@@ -64,13 +58,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 20,
               ),
               UrlText(
-                text:
-                    'Sure, Of course you can change all of them. Looks like this: https://www.google.com .',
+                'Sure, Of course you can change all of them. Looks like this: https://www.google.com .',
                 urlStyle: TextStyle(
                     color: Colors.purple,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w800),
                 style: TextStyle(color: Colors.pink),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "You can use markdown link to setup the link tilte, such as :  [This is Google Web](https://www.google.com)",
+              ),
+              UrlText(
+                'It will look like this when the markdown sign is false: [This is Google Web](https://www.google.com)',
+                urlStyle: TextStyle(
+                    color: Colors.purple,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w800),
+                style: TextStyle(color: Colors.pink),
+                markdown: false,
+              ),
+              UrlText(
+                'Then, the markdown sign is true, it will look like this: [This is Google Web](https://www.google.com).',
+                urlStyle: TextStyle(
+                    color: Colors.purple,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w800),
+                style: TextStyle(color: Colors.pink),
+                markdown: true,
               ),
             ],
           ),

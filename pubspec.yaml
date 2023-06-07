@@ -1,15 +1,15 @@
 name: url_text
 description: Url Test. Identify web links in text and make them clickable.
-version: 1.0.2
+version: 2.0.0
 homepage: https://github.com/LunaGao/Url_Text
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=3.0.2 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^5.5.0
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
